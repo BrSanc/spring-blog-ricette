@@ -1,5 +1,6 @@
 package org.learning.java.springblogricette.controller;
 
+import jakarta.validation.Valid;
 import org.learning.java.springblogricette.model.Recipe;
 import org.learning.java.springblogricette.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class RecipeController {
     }
 
     @PostMapping("/create")
-    public String doCreate(@ModelAttribute("recipesObj")Recipe recipeForm,
+    public String doCreate(@Valid @ModelAttribute("recipesObj")Recipe recipeForm,
     BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return "recipes/create";
@@ -72,7 +73,7 @@ public class RecipeController {
     }
 
     @PostMapping("/edit/recipe/{id}")
-    public String doEdit (@PathVariable Integer id, @ModelAttribute("recipesObj") Recipe recipeForm,
+    public String doEdit (@PathVariable Integer id,@Valid @ModelAttribute("recipesObj") Recipe recipeForm,
                           BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return "/recipes/edit";

@@ -2,6 +2,8 @@ package org.learning.java.springblogricette.model;
 
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.learning.java.springblogricette.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,11 +17,18 @@ public class Recipe {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank
+    @Size(max = 25)
+    @Column( length = 25, nullable = false)
     private String title;
+    @NotBlank
     private String ingredients;
+    @NotBlank
     private String image;
     private LocalTime preparationTime;
     private Integer portions;
+
+    @NotBlank
     private String description;
 
     public Integer getId() {
