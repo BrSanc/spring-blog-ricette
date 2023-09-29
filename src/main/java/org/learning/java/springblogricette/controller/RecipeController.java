@@ -21,8 +21,8 @@ public class RecipeController {
 
     @GetMapping
     public String index(Model model){
-        //List<Recipe> recipeList = recipeRepository.findAll();
-        //model.addAttribute("recipesObj", recipeList);
+        List<Recipe> recipeList = recipeRepository.findAll();
+        model.addAttribute("recipesObj", recipeList);
         return "recipes/index";
     }
 }
