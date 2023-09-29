@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Book Detail')"></head>
+<body>
+
+<div class="container">
+    <h1 th:text="${recipesObj.title}"></h1>
+    <hr>
+
+    <div class="row justify-content-between">
+        <div class="col-6">
+            <dl>
+                <dt>Ingredients: </dt>
+                <dd th:text="${recipesObj.ingredients}"></dd>
+                <dt>Preparation Time: </dt>
+                <dd th:text="|${recipesObj.preparationTime} Hr|"></dd>
+                <dt>Portions: </dt>
+                <dd th:text="${recipesObj.portions}"></dd>
+                <dt>Description: </dt>
+                <dd th:text="${recipesObj.description}"></dd>
+            </dl>
+        </div>
+        <div class="col-6">
+            <img th:src="@{${recipesObj.image}}" class="card-img-top img-fluid" th:alt="${recipesObj.title}">
+        </div>
+    </div>
+</div>
+</body>
+</html>
